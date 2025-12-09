@@ -3,13 +3,13 @@ import Presentation from './presentation';
 import FetchLevels from './fetch_levels';
 
 function App() {
-  const {niveau} = useState(1);
+  const [niveau] = useState(1);
 
 
   return (
     <>
       <div>
-        <Presentation />
+        <Presentation/>
       </div>
       <div>
         <FetchLevels niveau ={niveau} />

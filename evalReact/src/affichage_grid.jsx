@@ -1,26 +1,38 @@
-function AffichageGrid(data){
-    let grid = data.grid;
-    console.log("grid")
-    console.log(grid)
-    let grille =document.getElementById("tableau")
+//import FetchLevels from './fetch_levels.jsx'
+import {useState} from 'react'
+import './affichage_grid.css'
+
+function AffichageGrid({grille}){
     console.log("grille")
     console.log(grille)
-    for (let i=0;i<grid.length;i++){
-        let tr=document.createElement("tr")
-        console.log("i, tr");
-        console.log(i, tr);
-        grille.append(tr);
-        for(let j=0;j<grid[i].length;j++){
-            let td  =document.createElement("td")
-            console.log("i, td")
-            console.log(j, td)
-            tr.append(td)
-            grille.rows[i].cells[j].innerHTML=grid[i][j]
-            console.log(grille.rows[i].cells[j].innerHTML=grid[i][j])
+    //let cellValue =grid
+    const getCellClass = (cellValue) =>{
+        switch(cellValue){
+            case "S":
+                return "start"
+            case "W":
+                return "wall";
+            case "P":
+                return 'player';
+            case "C":
+                return "coin";
+            case "E":
+                return "exit";
+            default:
+                return "empty";
         }
     }
     return (
-        <AffichageGrid data={data}/>
-    )
+        <tbody>
+            {grille.map((row, i) => (
+                <tr key={i}>
+                    {row.map((cell, j) => (
+                        <td key={j} className={getCellClass(cell)}></td>
+                    ))}
+                </tr>
+            ))}
+        </tbody>
+    );
 }
 export default AffichageGrid
+

@@ -1,0 +1,27 @@
+.start{
+    background-color: green;
+}
+.wall{
+    background-color: brown;
+}
+.player{
+    background: radial-gradient(circle, white, blue);
+}
+.exit{
+    background-color: red;
+}
+.coin{
+    background-color: yellow;
+}
+.empty{
+    background-color: white;
+}
+td, tr, table{
+    border-collapse: collapse;
+    border:1px solid #444444;
+}
+
+table{
+    width:150px;
+    height:150px
+}
