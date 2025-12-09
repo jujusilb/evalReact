@@ -1,0 +1,188 @@
+PROJET FRONT
+
+
+Le projet consiste à faire un jeu de labyrinthe avec un niveau de complexité de développement croissant.
+
+
+Définition des groupes : https://docs.google.com/spreadsheets/d/1m9plz9wDrA4V_lVoINA8SeemzEGQLCEKYeX99AFb6lY/edit?usp=sharing
+
+api:
+https://github.com/MaDesOcr/apilabyrinthe-
+
+
+Ce qui est attendu : 
+.Travail en binôme de préférence, chaque membre du groupe doit rendre un même rendu sur Cesar(repo GitHub public)
+.En plus du projet, un document explicatif du travail effectué
+.Il y aura présentation du travail en cours : 10 minutes de présentation par groupe
+.Le rendu final sera fait dimanche 14/12 21H55
+.Dans le rendu final, un document expliquera les ajouts par rapport à la présentation
+.Dans ce rendu final, seront listés les fonctionnalités demandées et celles réalisées seront clairement identifiées.
+
+
+
+## Niveau 10/20 – MVP complet (avec accueil + page de jeu + score)
+
+**Objectif :**
+Le jeu est **jouable de bout en bout**, avec navigation minimum.
+
+**Doit contenir :**
+
+### Fonctionnalités
+
+* **Page d’accueil** :
+
+  * Nom du jeu
+  * Petit texte de contexte
+  * champ de saisie de pseudo
+  * Bouton “Jouer” (qui lance un niveau)
+
+
+* **Écran de jeu** :
+
+  * Affichage de la **grille** (niveau chargé depuis l’API)
+  * Tuiles cliquables qui se **révèlent** (au moins chemin / mur / départ / sortie)
+  * Position du joueur (même simplifiée)
+  * On ne peut révéler que les tuiles adjacentes à celle déjà révélées.
+  * La case start est révélée au lancement"
+
+* **Page de fin de partie + highscores ** :
+
+  * Affiche au minimum :
+    * résultat (Victoire/Défaite)
+    * un score simple (ex : nombre de tuiles retournées, temps de jeu)
+    * enregistrement du pseudo+score
+    * affichage des highscores enregistrés
+
+### API
+
+* Appel à l’API pour :
+
+  * récupérer au moins **un niveau** (grille + infos de base)
+* Gestion minimale :
+
+  * état de chargement ou message d’erreur simple si l’API ne répond pas
+
+### Technique / Code
+
+* En React
+* Routing simple (ex : accueil → jeu → score) ou gestion par états
+* Composants basiques (`Game`, `Grid`, `Tile`, `Score`…)
+
+---
+
+## Niveau 13/20 – Jeu RPG “complet” (combat + inventaire de base)
+
+**En plus de tout ce qui est au niveau 10 :**
+
+### Gameplay
+
+* **Combats** :
+
+  * Si le joueur a ramasé une arme en chemin, il gagne automatiquement
+  * Si le joueur n'a pas d'arme, il ne peut pas aller sur le case nouvellement révélée
+
+* **Inventaire basique** :
+
+  * récupération des **clés** dans un inventaire
+* **Clés & portes** :
+
+  * Tuiles porte `"D:color"` :
+
+    * bloquantes sans clé
+    * traversables si la clé correspondante est dans l’inventaire
+* Au moins **1 type d’obstacle / objet** OU **pièges** simples (perte de HP ou malus)
+
+### API
+
+* Utilisation de l’API pour :
+
+  * la grille,
+  * les ennemis **ou** les obstacles (au moins un de ces éléments vient des données API, pas tout hardcodé)
+
+### Technique
+
+* Découpage correct :
+
+  * ex : `BattleModal`, `Inventory`, etc.
+* Gestion propre de l’état du jeu (joueur, grille, combat) avec des hooks
+
+---
+
+## Niveau 16/20 – Version solide, riche et bien structurée
+
+**En plus de 10 + 13 :**
+
+### Gameplay
+
+* **Plusieurs types d’ennemis**, avec stats différentes (HP, attaque).
+* En fonction de l'arme acquise, le joueur fait des dégats différents
+
+* **Plusieurs types d’obstacles & objets** (ex : pièges, fontaines...)
+* HP du joueur persistants dans le niveau (combats + pièges ont un vrai impact)
+* Conditions de victoire/défaite bien définies et stables
+
+### API
+
+* Plusieurs niveaux ou au moins un niveau bien paramétré
+* API réellement exploitée (grille, ennemis, obstacles, etc.)
+
+### Technique / Code
+
+* Architecture lisible :
+
+  * logique de combat isolée,
+  * logique de grille isolée,
+  * composants réutilisables
+* Peu de duplication évidente
+* Commentaires sur les parties complexes
+
+### UI/UX
+
+* Interface lisible :
+
+  * HP
+  * inventaire (clés/objets)
+  * au moins un indicateur (tuiles retournées, niveau, etc.)
+* Messages clairs (clé trouvée, porte bloquée, combat en cours, etc.)
+
+---
+
+## Niveau 18/20 – Projet abouti 
+
+**En plus de 10 + 13 + 16 :**
+
+### Gameplay
+
+* **Plusieurs niveaux distincts** (difficulté, taille de grille, plus d’ennemis/obstacles). Passage d'un niveau à l'autre
+* Système de **score un peu travaillé** :
+
+  * temps
+  * nombre de combats
+  * tuiles révélées
+  * pénalités pour pièges/bad moves
+* Petite **page de règles/tutoriel** claire
+* Améliorations possibles :
+
+  * timer,
+  * mini-historique des scores (localStorage),
+  * variantes de gameplay entre niveaux (plus puzzle, plus combat…)
+
+### Technique / Code
+
+* Composants bien factorisés (`Tile`, `Modal`, `StatusBar`, `Inventory`, etc.)
+* Hooks personnalisés possibles (`useBattle`, `useInventory`, `useLevel`)
+* Code propre, lisible, cohérent
+* Bonus apprécié (pas obligatoire) :
+
+### UI/UX
+
+* UI soignée :
+
+  * palette de couleurs cohérente,
+  * typographie lisible,
+  * icônes pour les différents types de tuiles/clés/objets
+* Petites animations :
+
+  * flip des tuiles,
+  * transitions, feedback visuels
+* Expérience globale “fluide” (on comprend où cliquer et pourquoi)
