@@ -1,5 +1,5 @@
 //import FetchLevels from './fetch_levels.jsx'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import './affichage_grid.css'
 
 function AffichageGrid({grille}){
@@ -27,7 +27,9 @@ function AffichageGrid({grille}){
             {grille.map((row, i) => (
                 <tr key={i}>
                     {row.map((cell, j) => (
-                        <td key={j} className={getCellClass(cell)}></td>
+                        <td key={j} className={getCellClass(cell)}>
+                            { ((''))}
+                        </td>
                     ))}
                 </tr>
             ))}

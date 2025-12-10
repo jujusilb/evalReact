@@ -4,7 +4,6 @@ import {useState, useEffect} from 'react'
 
 function FetchLevels({niveau}){
     const [data, setData] = useState(null)
-//    const [niveau, setNiveau] = useState(1)
     useEffect(()=>{
         async function fetchData(){
             console.log("niveau", niveau);
