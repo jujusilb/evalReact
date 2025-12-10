@@ -1,11 +1,11 @@
 //import FetchLevels from './fetch_levels.jsx'
+import useMouvement from './services/useMoving.jsx'
 import {useState, useEffect} from 'react'
 import './affichage_grid.css'
-
+//const {e, setE} = useState(e)
 function AffichageGrid({grille}){
     console.log("grille")
     console.log(grille)
-    //let cellValue =grid
     const getCellClass = (cellValue) =>{
         switch(cellValue){
             case "S":
@@ -28,7 +28,7 @@ function AffichageGrid({grille}){
                 <tr key={i}>
                     {row.map((cell, j) => (
                         <td key={j} className={getCellClass(cell)}>
-                            { ((''))}
+                            {td.addEventListener("keydown", Moving)}
                         </td>
                     ))}
                 </tr>
