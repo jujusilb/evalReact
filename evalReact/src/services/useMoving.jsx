@@ -1,7 +1,7 @@
 import AffichageGrid from '../affichage_grid'
 import { useState, useEffect } from 'react'
 
-const useMouvement = (e)=>{
+const useMouvement = (e, grille)=>{
     const [curseur, setCurseur] = useState({x:0, y:0}) 
     const [x, setX]= useState(curseur.x)
     const [y, setY] =useState(curseur.y)

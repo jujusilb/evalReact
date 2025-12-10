@@ -6,6 +6,7 @@ import './affichage_grid.css'
 function AffichageGrid({grille}){
     console.log("grille")
     console.log(grille)
+    const [currentGrille, handleKeyDown] = useMouvement(grille);
     const getCellClass = (cellValue) =>{
         switch(cellValue){
             case "S":
@@ -27,8 +28,7 @@ function AffichageGrid({grille}){
             {grille.map((row, i) => (
                 <tr key={i}>
                     {row.map((cell, j) => (
-                        <td key={j} className={getCellClass(cell)}>
-                            {td.addEventListener("keydown", Moving)}
+                        <td key={j} className={getCellClass(cell)}>  
                         </td>
                     ))}
                 </tr>
