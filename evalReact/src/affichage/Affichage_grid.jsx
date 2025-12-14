@@ -1,19 +1,38 @@
 import useMouvement from '../hook/useMoving'
 import '../css/affichage_grid.css'
+import { useState } from 'react'
 function AffichageGrid({grille}){
     console.log("IN AFFICHAGEGRID")
-    const {x, y} =useMouvement(grille)
+    const {x, y, VisitedPlayground} =useMouvement(grille)
     console.log("grille")
     console.log(grille)
     console.log("x, y")
     console.log(x, y)
+    console.log("visitedPlayground")
+    console.log(VisitedPlayground)
+    //const [VisitedPlayground, setVisitedPlayground] =useState(0)
+    //setVisitedPlayground
+    
+    const playerPlayground =[];
+    for(let i=0;i<grille.length;i++){
+        playerPlayground[i]=[]
+        for(let j=0;j<grille[0].length;j++){
+            if (i==y && j==x){
+                playerPlayground[i][j]='P';
+            } else if(VisitedPlayground[i][j] != null){
+                playerPlayground[i][j]= grille[i][j]
+            }else playerPlayground[i][j] ='H';
+            
+        }
+    }
 
-    const playerPlayground =grille.map((row, rowIndex)=>
-        row.map((cell, colIndex)=>{
-            if (rowIndex===y && colIndex ===x){
-                return 'P';
-            } else return cell;
-        }))
+    //const playerPlayground =grille.map((row, rowIndex)=>
+    //    row.map((cell, colIndex)=>{
+    //        if (rowIndex===y && colIndex ===x){
+    //            return 'P';
+    //        } else {
+    //            eturn cell;
+    //    }))
 
 
 
@@ -31,12 +50,9 @@ function AffichageGrid({grille}){
                 return "coin";
             case "E":
                 return "exit";
-            default:
+            case "H":
                 return "empty";
         }
-    }
-    if (!grille || !grille.length) {
-        return <p>Grille invalide</p>;
     }
     return (
         <>
