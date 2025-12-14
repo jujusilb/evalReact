@@ -1,3 +1,4 @@
+import vocals from '../tools/vocals'
 import useMouvement from '../hook/useMoving'
 import '../css/affichage_grid.css'
 import { useState } from 'react'
@@ -10,9 +11,8 @@ function AffichageGrid({grille}){
     console.log(x, y)
     console.log("visitedPlayground")
     console.log(VisitedPlayground)
-    //const [VisitedPlayground, setVisitedPlayground] =useState(0)
-    //setVisitedPlayground
-    
+
+
     const playerPlayground =[];
     for(let i=0;i<grille.length;i++){
         playerPlayground[i]=[]
@@ -25,19 +25,7 @@ function AffichageGrid({grille}){
             
         }
     }
-
-    //const playerPlayground =grille.map((row, rowIndex)=>
-    //    row.map((cell, colIndex)=>{
-    //        if (rowIndex===y && colIndex ===x){
-    //            return 'P';
-    //        } else {
-    //            eturn cell;
-    //    }))
-
-
-
-
-    
+   
     const getCellClass = (cellValue) =>{
         switch(cellValue){
             case "S":
@@ -58,20 +46,12 @@ function AffichageGrid({grille}){
         <>
             <table>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                        <th>6</th>
-                    </tr>
                     {playerPlayground.map((row, i) => (
                         <tr key={i}>
                             {row.map(
                                 (cell, j) => (
                                     <td key={j} aria-live='polite' className={getCellClass(cell)}>
-                                        {cell   }
+                                        
                                     </td>
                                 )
                             )}

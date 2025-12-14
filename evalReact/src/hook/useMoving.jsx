@@ -1,5 +1,6 @@
 //import AffichageGrid from '../affichage/affichage_grid'
 import { useState, useEffect, useCallback} from 'react'
+import vocals from '../tools/vocals';
 
 const useMouvement = (grille)=>{
     console.log('IN USEMOUVEMENT')
@@ -45,40 +46,65 @@ const useMouvement = (grille)=>{
         console.log(`vous avez tapé ${event.key}`)
         function checkMove(targetX, targetY){
             if (targetX < 0 || targetX >= maxX || targetY < 0 || targetY >= maxY) {
+                vocals("hors limite !")
                 return false;
             }
+        
             if (grille[targetY][targetX] === 'W') {
                 visitedYet(targetY,targetX)
+                vocals("Mur !")
                 return false;
             }
             if (grille[targetY][targetX] === 'E') {
                 console.log("FINI !")
+                vocals("bravo !")
                 return true;
-            }
+            } else checkVocals(targetY, targetX)
             return true;
-
         }
-
+        function checkVocals(targetY, targetX){
+            switch (grille[targetY][targetX]){
+                case "S":
+                vocals("Départ")
+                break;
+            case "C":
+                vocals("Piece !")
+                break;
+            case "E":
+                vocals("Ennemi !")
+                break;
+            case "A":
+                vocals("Arme !")
+                break;
+            case "K":
+                vocals("Clé !")
+                break;
+            }
+        }
         switch(event.key){
             case 'z':
-                if (checkMove(x, y - 1)) {  
+            case 'ArrowUp':
+                if (checkMove(x, y - 1)) { 
                     visitedYet(y, x);
                     setY(prevY => prevY - 1);
                 }
                 break;
             case 'q':
+            case 'ArrowLeft':
                 if (checkMove(x - 1, y)) {
                     visitedYet(y, x);
                     setX(prevX => prevX - 1);
                 }
                 break;
             case 's':
+            case 'ArrowDown':
                 if (checkMove(x, y + 1)) {
                     visitedYet(y, x);
                     setY(prevY => prevY + 1);
                 }
                 break;
             case 'd':
+            case 'ArrowRight':
                 if (checkMove(x + 1, y)) {
                     visitedYet(y, x);
                     setX(prevX => prevX + 1);

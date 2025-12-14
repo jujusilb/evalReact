@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react'
 
-
 function FetchLevels({niveau, onDataLoaded}){
-
     useEffect(()=>{
         async function fetchData(){
             try{
