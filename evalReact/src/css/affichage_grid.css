@@ -22,6 +22,10 @@ td, tr, table{
 }
 
 table{
-    width:150px;
-    height:150px
+    width:auto;
+    height:auto;
+}
+td{
+    width: 20px;
+    height: 20px;
 }

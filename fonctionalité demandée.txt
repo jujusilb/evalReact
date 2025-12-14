@@ -1,0 +1,6 @@
+recuperer grille depuis API
+creer une 2e grille
+si le joeur clique sur une case de la deuxieme
+je compare avec la grille de l'API
+si la selon la lettre de la tuille j'affiche celle de l'api
+

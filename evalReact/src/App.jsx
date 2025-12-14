@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
-import Presentation from './presentation';
-import FetchLevels from './fetch_levels';
+import React, { useCallback, useState } from 'react';
+import Presentation from './affichage/presentation';
+import FetchLevels from './api/Fetch_levels';
+import AffichageGrid from './affichage/Affichage_grid';
 
 function App() {
-  const [niveau] = useState(1);
-
-
+  const [levelData, setLevelData] =useState(null)
+  const [niveau, setNiveau] = useState(1);
+  const handleLevelLoaded = useCallback((data) =>{
+    setLevelData(data);
+  }, [])
   return (
     <>
       <div>
-        <Presentation/>
+        <Presentation />
       </div>
       <div>
-        <FetchLevels niveau ={niveau} />
+        <p>niveau {niveau}</p>
+        <FetchLevels 
+        niveau ={niveau}
+        onDataLoaded={handleLevelLoaded}
+        />
+        {levelData ? (
+          <AffichageGrid
+            grille={levelData.grid}/>
+        ) : (
+          <p>Chargement du niveau {niveau} en attente</p>
+        )}
       </div>
     </>
   )
