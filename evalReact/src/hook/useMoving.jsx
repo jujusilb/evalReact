@@ -46,7 +46,6 @@ const useMouvement = (grille)=>{
     }, [VisitedPlayground, grille]);
 
     const handleKeyDown= useCallback((event) =>{
-        console.log(`vous avez tapé ${event.key}`)
         function checkMove(targetX, targetY){
             if (targetX < 0 || targetX >= maxX || targetY < 0 || targetY >= maxY) {
                 vocals("hors limite !")
@@ -59,7 +58,6 @@ const useMouvement = (grille)=>{
                 return false;
             }
             if (grille[targetY][targetX] === 'E') {
-                console.log("FINI !")
                 vocals("bravo !")
                 return true;
             } else checkVocals(targetY, targetX)
