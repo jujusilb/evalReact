@@ -25,7 +25,6 @@ function AffichageGrid({grille}){
             
         }
     }
-   
     const getCellClass = (cellValue) =>{
         switch(cellValue){
             case "S":
@@ -44,6 +43,7 @@ function AffichageGrid({grille}){
     }
     return (
         <>
+            <p>Voici le niveau {niveau}</p>
             <table>
                 <tbody>
                     {playerPlayground.map((row, i) => (
@@ -51,7 +51,7 @@ function AffichageGrid({grille}){
                             {row.map(
                                 (cell, j) => (
                                     <td key={j} aria-live='polite' className={getCellClass(cell)}>
-                                        
+                                    
                                     </td>
                                 )
                             )}

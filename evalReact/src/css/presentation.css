@@ -1,3 +1,12 @@
 .welcome{
     font-size:2em;
 }
+
+.btnStart{
+    padding:15px;
+    background: radial-gradient(circle, #FBB, #DDD);
+    text-decoration: none;
+    color:black;
+    font-size: bold;
+    border-radius: 15px;
+}

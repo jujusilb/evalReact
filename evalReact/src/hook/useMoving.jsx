@@ -5,9 +5,8 @@ import vocals from '../tools/vocals';
 const useMouvement = (grille)=>{
     console.log('IN USEMOUVEMENT')
 
-    if (!grille || !grille.length || !grille[0]?.length) {
-        return { x: 0, y: 0 };
-    }
+    
+   
 
     const maxX =grille[0].length
     const maxY =grille.length
@@ -30,17 +29,21 @@ const useMouvement = (grille)=>{
         return base;
     })
 
-    function visitedYet(targetY, targetX){
+    const visitedYet  = useCallback((targetY, targetX) => {
+
+        if (!grille || !grille.length || !grille[0]?.length) return ;
+        
         const newVisited = VisitedPlayground.map(
-            (row, rIndex)=>row.map(
-                (col, cIndex)=>{
-                    return col;
-                }
-            )
-        );
-        newVisited[targetY][targetX]=1
+            (row, rIndex) => {
+                if (rIndex === targetY) {
+                    return row.map(
+                        (cell, cIndex) => (
+                            cIndex === targetX ? 1 : cell));
+            }
+            return row;
+        });
         setVisitedPlayground(newVisited)
-    }
+    }, [VisitedPlayground, grille]);
 
     const handleKeyDown= useCallback((event) =>{
         console.log(`vous avez tapé ${event.key}`)
