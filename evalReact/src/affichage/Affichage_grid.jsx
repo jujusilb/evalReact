@@ -43,7 +43,6 @@ function AffichageGrid({grille}){
     }
     return (
         <>
-            <p>Voici le niveau {niveau}</p>
             <table>
                 <tbody>
                     {playerPlayground.map((row, i) => (

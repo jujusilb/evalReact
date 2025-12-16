@@ -29,7 +29,7 @@ const useMouvement = (grille)=>{
         return base;
     })
 
-    const visitedYet  = useCallback((targetY, targetX) => {
+    const visitedYet  = useCallback-((targetY, targetX) => {
 
         if (!grille || !grille.length || !grille[0]?.length) return ;
         
